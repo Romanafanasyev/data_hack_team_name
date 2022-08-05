@@ -15,4 +15,5 @@ class Author():
 
 args_dict = {"price_min": 100.0,
         "price_max": 3000.0,
-        "title_len": 10}
+        "title_len": 10
+             }
