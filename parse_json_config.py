@@ -1,25 +1,21 @@
+import inspect
 import json
+import sys
+from tables import args_dict
 
-# initialize all arguments
-min_book_price = 100.0
-max_book_price = 3000.0
-title_len = 10
+# import table names
+classes = inspect.getmembers(sys.modules['tables'], inspect.isclass)
 
 # loading config.json
-jsonDataFile = open('data_hack_team_name/config.json', 'r')
-jsonData = jsonDataFile.read()
-dictData = json.loads(jsonData)
+jsonConfigFile = open('data_hack_team_name/config.json', 'r')
+configJson = jsonConfigFile.read()
+configData = json.loads(configJson)
 
 # update arguments values from config.json
-if "Book" in dictData:
-    print(dictData["Book"])
-    if "price_min" in dictData["Book"]:
-        min_book_price = dictData["Book"]["price_min"]
+for class_name in classes:
+    if class_name[0] in configData:
+        for arg_name in args_dict.keys():
+            if arg_name in configData[class_name[0]]:
+                args_dict[arg_name] = configData[class_name[0]][arg_name]
 
-    if "price_max" in dictData["Book"]:
-        max_book_price = dictData["Book"]["price_max"]
-
-    if "title_len" in dictData["Book"]:
-        max_book_price = dictData["Book"]["title_len"]
-
-print(min_book_price, max_book_price, title_len)
+print(args_dict)
