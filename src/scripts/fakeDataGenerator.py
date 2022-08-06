@@ -4,7 +4,11 @@ import random
 import datetime
 from faker import Faker
 from pandas import DataFrame
-
+import tables
+import types
+import os.path
+import pkgutil
+import testpkg
 from jsonConfig import JsonConfig
 
 
@@ -15,6 +19,9 @@ class FakeDataGenerator:
 
     def gen_all(self, config_path=None):
         # load config
+        module_names = os.listdir('/Users/adalabilbekov/PycharmProjects/pythonProject3/data_hack_team_name/src/tables')
+        module_names = [module.replace('.py', '').lower() for module in module_names]
+        print(module_names)
         json_config = JsonConfig()
         if config_path is not None:
             json_config_file = open(config_path, 'r')
