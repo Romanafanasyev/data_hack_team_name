@@ -5,6 +5,7 @@ from datetime import datetime
 @dataclass
 class BasedConfig:
     list_allowed: list = None
+    list_allowed_weights: list[int] = None
 
 
 @dataclass
