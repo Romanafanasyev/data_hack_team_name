@@ -5,15 +5,12 @@ from tables.Marks import Marks
 from tables.Student import Student
 from tables.University import University
 
-obj = Marks()
 
 spark = SparkSession.builder.appName("Test").getOrCreate()
 generator = FakeDataGenerator(tables_path='src/tables')
 
-tables_class_list = [Marks, Student, University]
-dataframe_list = spark.createDataFrame(
-    generator.gen_all(spark, tables_class_list, config_path='src/userConfig/config.json')
-)
+tables_class_list = [Marks, Student]
 
-print(dataframe_list)
-print(len(dataframe_list))
+dataframes_list = generator.gen_all(spark, tables_class_list, config_path='src/userConfig/config.json')
+print(*dataframes_list, sep='\n')
+# dataframes_list[0].show()

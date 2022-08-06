@@ -7,7 +7,7 @@
       "mask":null
    },
    "strConfig":{
-      "list_allowed":null,
+      "list_allowed":["aa"],
       "min_str_len":5,
       "max_str_len":100,
       "language":"ru_RU",
@@ -16,8 +16,8 @@
    },
    "floatConfig":{
       "list_allowed":null,
-      "min_float_value":-100.0,
-      "max_float_value":100.0
+      "min_float_value":0.0,
+      "max_float_value":5.0
    },
    "datetimeConfig":{
       "list_allowed":null,

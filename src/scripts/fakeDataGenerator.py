@@ -17,7 +17,7 @@ class FakeDataGenerator:
         else:
             user_config_dict = {}
 
-        tables = []
+        tables_list = []
         for table_class in tables_class_list:
 
             config_dict = asdict(table_class.config) | user_config_dict
@@ -26,11 +26,12 @@ class FakeDataGenerator:
             table = []
             for _ in range(table_class.config.rows_number):
                 obj = table_class()
-                table.append((obj,))
+                table.append(obj)
 
-            tables.append(table)
+            # df = spark.createDataFrame(table)
+            tables_list.append(table)
 
-        return tables
+        return tables_list
 
     def gen_one(self, table, config=''):
         pass
