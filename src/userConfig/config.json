@@ -1,5 +1,23 @@
 {
-	"num_rows":10000,
-	"min_int_rand": 1,
-	"txt_length": 6
+   "rows_number":10000,
+   "intConfig":{
+      "min_int_value":0,
+      "max_int_value":1000000,
+      "list_allowed":null
+   },
+   "strConfig":{
+      "min_str_len":5,
+      "max_str_len":100,
+      "list_allowed":null
+   },
+   "floatConfig":{
+      "min_float_value":-100.0,
+      "max_float_value":100.0,
+      "list_allowed":null
+   },
+   "datetimeConfig":{
+      "min_datetime":"1988-01-01 00:00:00",
+      "max_datetime":"2030-12-31 00:00:00",
+      "list_allowed":null
+   }
 }

@@ -1,9 +1,15 @@
-from dataclasses import dataclass
-from datetime import datetime
+from scripts import FieldValueGenerator
+from scripts.ConfigClasses import *
+
+config = Config(
+    strConfig=StrConfig(
+        max_str_len=20
+    )
+)
 
 
 @dataclass
 class Student:
-    id: int
-    name: str
-    birth_date: datetime
+    id: int = FieldValueGenerator.generate_int(config.intConfig)
+    name: str = FieldValueGenerator.generate_str(config.strConfig)
+    birth_date: datetime = FieldValueGenerator

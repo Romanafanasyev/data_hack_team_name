@@ -37,6 +37,7 @@ class FakeDataGenerator:
             for j in list(object_dict[i].keys()):
                 locals()[j] = []
                 for l in range(json_config.num_rows):
+
                     if object_dict[i][j] == int:
                         locals()[j].append(random.randint(json_config.min_int_rand, json_config.max_int_rand))
                     if object_dict[i][j] == float:
