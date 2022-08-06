@@ -17,3 +17,8 @@ def generate_datetime(datetimeConfig: DatetimeConfig) -> datetime:
 
 def generate_float(floatConfig: FloatConfig) -> float:
     return random.uniform(floatConfig.min_float_value, floatConfig.max_float_value)
+
+
+def generate_timestamp(datetimeConfig: DatetimeConfig) -> float:
+    return random.uniform(datetimeConfig.min_timestamp, datetimeConfig.max_timestamp)
+
