@@ -1,5 +1,4 @@
-import json
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass
 from datetime import datetime
 
 
@@ -38,6 +37,3 @@ class Config:
     strConfig: StrConfig = StrConfig()
     floatConfig: FloatConfig = FloatConfig()
     datetimeConfig: DatetimeConfig = DatetimeConfig()
-
-
-print(json.dumps(asdict(Config()), default=str))
