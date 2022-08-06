@@ -1,3 +1,11 @@
+from faker import Faker
+import pandas as pd
+import numpy
+import random
+import inspect
+import sys
+import datetime
+
 class FakeDataGenerator:
 
     def __init__(self, path):
@@ -14,8 +22,8 @@ class FakeDataGenerator:
 
     def gnr_test(self, num_rows, min_int_rand, max_int_rand, min_float_rand, max_float_rand,
                  txt_length, year_start, month_start, day_start, year_end, month_end, day_end):
-
-        clsmembers = inspect.getmembers(sys.modules[self.path], inspect.isclass)
+        fake = Faker(['ru_RU'])
+        clsmembers = inspect.getmembers(sys.modules[__name__], inspect.isclass)
         classes_name = []
         object_dict = []
         for i in range(len(clsmembers)):
