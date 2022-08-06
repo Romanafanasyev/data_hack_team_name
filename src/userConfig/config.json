@@ -1,5 +1,5 @@
 {
-   "rows_number":10000,
+   "rows_number":100,
    "intConfig":{
       "list_allowed":null,
       "min_int_value":0,
