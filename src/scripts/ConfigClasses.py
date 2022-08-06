@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
 
+
 @dataclass
 class BasedConfig:
     list_allowed: list = None
@@ -10,12 +11,16 @@ class BasedConfig:
 class IntConfig(BasedConfig):
     min_int_value: int = 0
     max_int_value: int = 1000000
+    mask: str = None
 
 
 @dataclass
 class StrConfig(BasedConfig):
     min_str_len: int = 5
     max_str_len: int = 100
+    language: str = "ru_RU"
+    str_len: int = None
+    mask: str = None
 
 
 @dataclass
