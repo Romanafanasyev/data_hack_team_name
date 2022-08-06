@@ -1,5 +1,5 @@
 {
-	"num_rows":10,
+	"num_rows":10000,
 	"min_int_rand": 1,
 	"txt_length": 6
 }

@@ -3,8 +3,10 @@ import sys
 import random
 import datetime
 from faker import Faker
-from data_hack_team_name.jsonConfig import JsonConfig
-import data_hack_team_name.tables
+from pandas import DataFrame
+
+from jsonConfig import JsonConfig
+
 
 class FakeDataGenerator:
 
@@ -46,9 +48,9 @@ class FakeDataGenerator:
                             fake.date_between_dates(date_start=datetime.datetime(json_config.year_start, json_config.month_start, json_config.day_start),
                                                     date_end=datetime.datetime(json_config.year_end, json_config.month_end, json_config.day_end)))
                 locals()[df_name].append(locals()[j])
-            # locals()[df_name] = DataFrame(locals()[df_name])
-            # locals()[df_name] = locals()[df_name].transpose()
-            # locals()[df_name].columns = list(object_dict[i].keys())
+            locals()[df_name] = DataFrame(locals()[df_name])
+            locals()[df_name] = locals()[df_name].transpose()
+            locals()[df_name].columns = list(object_dict[i].keys())
             df_list.append(locals()[df_name])
         return df_list
 
