@@ -1,7 +1,7 @@
 import json
 from dataclasses import asdict
 
-import jsonpickle
+from scripts.ConfigClasses import Config
 
 
 class FakeDataGenerator:
@@ -17,21 +17,20 @@ class FakeDataGenerator:
         else:
             user_config_dict = {}
 
-        data_frames = []
+        tables = []
         for table_class in tables_class_list:
 
             config_dict = asdict(table_class.config) | user_config_dict
-            table_class.config = jsonpickle.decode(json.dumps(config_dict))
 
+            table_class.config = Config.get_from_dict(config_dict)
             table = []
             for _ in range(table_class.config.rows_number):
-                obj = table_class.__init__
-                table.append(obj)
+                obj = table_class()
+                table.append((obj,))
 
-            df = spark.createDataFrame(table)
-            data_frames.append(df)
+            tables.append(table)
 
-        return data_frames
+        return tables
 
     def gen_one(self, table, config=''):
         pass

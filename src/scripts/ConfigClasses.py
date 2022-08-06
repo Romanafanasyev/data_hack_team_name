@@ -45,3 +45,13 @@ class Config:
     strConfig: StrConfig = StrConfig()
     floatConfig: FloatConfig = FloatConfig()
     datetimeConfig: DatetimeConfig = DatetimeConfig()
+
+    @staticmethod
+    def get_from_dict(config_dict: dict):
+        return Config(
+            rows_number=config_dict['rows_number'],
+            intConfig=IntConfig(**config_dict['intConfig']),
+            strConfig=StrConfig(**config_dict['strConfig']),
+            floatConfig=FloatConfig(**config_dict['floatConfig']),
+            datetimeConfig=DatetimeConfig(**config_dict['datetimeConfig']),
+        )
