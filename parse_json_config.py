@@ -1,21 +1,15 @@
 import inspect
 import json
 import sys
-from tables import args_dict
+from jsonConfig import JsonConfig
 
 # import table names
 classes = inspect.getmembers(sys.modules['tables'], inspect.isclass)
 
+is_user_config = True
 # loading config.json
-jsonConfigFile = open('data_hack_team_name/config.json', 'r')
-configJson = jsonConfigFile.read()
-configData = json.loads(configJson)
-
-# update arguments values from config.json
-for class_name in classes:
-    if class_name[0] in configData:
-        for arg_name in args_dict.keys():
-            if arg_name in configData[class_name[0]]:
-                args_dict[arg_name] = configData[class_name[0]][arg_name]
-
-print(args_dict)
+jsonConfig = JsonConfig()
+if is_user_config:
+    jsonConfigFile = open('data_hack_team_name/config.json', 'r')
+    configString = jsonConfigFile.read()
+    jsonConfig.updateConfig(configString)

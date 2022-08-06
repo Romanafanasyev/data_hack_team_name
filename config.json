@@ -1,6 +1,6 @@
 {
-"Book":{
-	"price_max":2500.0,
-	"title_len":6
-     }
+	"student_name_len":10,
+	"uni_city_len": 10,
+	"age_min": 18,
+	"age_max": 25
 }

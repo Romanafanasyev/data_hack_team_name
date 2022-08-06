@@ -1,19 +1,24 @@
-from dataclasses import asdict, dataclass
+from dataclasses import dataclass
+import datetime
+
 
 @dataclass
-class Book():
-    book_id: int #pk
-    title: str
-    author_id: int #fk
-    price: float
-    amount: int
+class Student:
+    id: int
+    name: str
+    birth_date: datetime.datetime
+
 
 @dataclass
-class Author():
-    author_id: int#pk
-    name_author: str
+class Uni:
+    id: int
+    city: str
+    post_code: str
 
-args_dict = {"price_min": 100.0,
-        "price_max": 3000.0,
-        "title_len": 10
-             }
+
+@dataclass
+class Marks:
+    id: int
+    name: str
+    date: datetime.datetime
+    gpa: float
