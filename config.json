@@ -1,6 +1,5 @@
 {
-	"student_name_len":10,
-	"uni_city_len": 10,
-	"age_min": 18,
-	"age_max": 25
+	"num_rows":10,
+	"min_int_rand": 1,
+	"txt_length": 6
 }
