@@ -2,7 +2,6 @@ import random
 from faker import Faker
 from scripts.ConfigClasses import *
 
-
 def _choice_from_list(config):
     if config.list_allowed_weights is not None:
         return random.choices(config.list_allowed, config.list_allowed_weights)
@@ -38,10 +37,17 @@ def generate_str(strConfig: StrConfig) -> str:
 
 
 def generate_datetime(datetimeConfig: DatetimeConfig) -> datetime:
+    if type(datetimeConfig.min_datetime) == str and type(datetimeConfig.max_datetime) == str:
+        min_date = datetime.strptime(datetimeConfig.min_datetime, '%Y-%m-%d %H:%M:%S').date()
+        max_date = datetime.strptime(datetimeConfig.max_datetime, '%Y-%m-%d %H:%M:%S').date()
+    else:
+        min_date = datetimeConfig.min_datetime
+        max_date = datetimeConfig.max_datetime
+
     if datetimeConfig.list_allowed is not None:
         return _choice_from_list(datetimeConfig)
 
-    return Faker().date_between_dates(datetimeConfig.min_datetime, datetimeConfig.max_datetime)
+    return Faker().date_between_dates(min_date, max_date)
 
 
 def generate_float(floatConfig: FloatConfig) -> float:

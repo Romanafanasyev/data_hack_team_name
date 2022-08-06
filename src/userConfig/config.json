@@ -7,7 +7,7 @@
       "mask":null
    },
    "strConfig":{
-      "list_allowed":["aa"],
+      "list_allowed":["aa", "bb", "Roma"],
       "min_str_len":5,
       "max_str_len":100,
       "language":"ru_RU",
