@@ -1,6 +1,8 @@
 import json
 from dataclasses import asdict
 
+import pandas as pd
+
 from scripts.ConfigClasses import Config
 
 
@@ -34,7 +36,7 @@ class FakeDataGenerator:
         return tables_list
 
 
-    def gen_joinable(self, spark, tables_class_list, config_path=None):
+    def gen_joinable(self, spark, tables_class_list, first_key_list, second_key_list, config_path=None):
 
         if config_path is not None:
             with open(config_path, 'r') as user_config_json:
@@ -55,6 +57,29 @@ class FakeDataGenerator:
 
             # df = spark.createDataFrame(table)
             tables_list.append(table)
+
+        # Изменения для джойнов
         for row in range(len(tables_list[0])):
-            tables_list[1][row].id = tables_list[0][row].id
+            for col_num in range(len(first_key_list)):
+                tables_list[1][row].__dict__[second_key_list[col_num]] = tables_list[0][row].__dict__[first_key_list[col_num]]
         return tables_list
+
+
+    def gen_from_file(self, spark, table_class, file_path):
+        if file_path[-3:] == 'csv':
+            file_df = pd.read_csv(file_path)
+        else:
+            file_df = pd.read_excel(file_path) # for xlsx require openpyxl
+
+        col_names_csv = file_df.columns.tolist()
+
+        table = pd.DataFrame()
+        col_names_dataclass = table_class().__dict__.keys()
+        for col_name in col_names_csv:
+            if col_name in col_names_dataclass:
+                table[col_name] = file_df[col_name]
+
+
+        # df = spark.createDataFrame(table)
+
+        return table
