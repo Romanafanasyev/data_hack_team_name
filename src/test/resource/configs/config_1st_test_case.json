@@ -1,0 +1,87 @@
+{
+  "Marks": {
+      "rows_number":10000,
+      "intConfig":{
+          "list_allowed":null,
+          "min_int_value":0,
+          "max_int_value":1000000,
+          "mask":null
+      },
+      "strConfig":{
+          "list_allowed":["Math", "History", "Physics"],
+          "min_str_len":5,
+          "max_str_len":100,
+          "language":"ru_RU",
+          "str_len":null,
+          "mask":null
+      },
+      "floatConfig":{
+          "list_allowed":null,
+          "min_float_value":0.0,
+          "max_float_value":5.0
+      },
+      "datetimeConfig":{
+          "list_allowed":null,
+          "min_datetime":"1988-01-01 00:00:00",
+          "max_datetime":"2030-12-31 00:00:00",
+          "min_timestamp":1659773975.6536,
+          "max_timestamp":1659774975.6536
+      }
+    },
+  "Student": {
+      "rows_number":10000,
+      "intConfig":{
+          "list_allowed":null,
+          "min_int_value":0,
+          "max_int_value":1000000,
+          "mask":null
+      },
+      "strConfig":{
+          "min_str_len":5,
+          "max_str_len":100,
+          "language":"ru_RU",
+          "str_len":null,
+          "mask":"Team name _?????"
+      },
+      "floatConfig":{
+          "list_allowed":null,
+          "min_float_value":0.0,
+          "max_float_value":5.0
+      },
+      "datetimeConfig":{
+          "list_allowed":null,
+          "min_datetime":"1988-01-01 00:00:00",
+          "max_datetime":"2030-12-31 00:00:00",
+          "min_timestamp":1659773975.6536,
+          "max_timestamp":1659774975.6536
+      }
+    },
+    "University": {
+      "rows_number":10000,
+      "intConfig":{
+          "list_allowed":null,
+          "min_int_value":0,
+          "max_int_value":1000000,
+          "mask":null
+      },
+      "strConfig":{
+          "min_str_len":8,
+          "max_str_len":15,
+          "language":"ru_RU",
+          "str_len":null,
+          "mask":null
+      },
+      "floatConfig":{
+          "list_allowed":null,
+          "min_float_value":0.0,
+          "max_float_value":5.0
+      },
+      "datetimeConfig":{
+          "list_allowed":null,
+          "min_datetime":"1988-01-01 00:00:00",
+          "max_datetime":"2030-12-31 00:00:00",
+          "min_timestamp":1659773975.6536,
+          "max_timestamp":1659774975.6536
+      }
+    }
+}
