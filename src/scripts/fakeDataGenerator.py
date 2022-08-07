@@ -22,7 +22,7 @@ class FakeDataGenerator:
         tables_list = []
         for table_class in tables_class_list:
 
-            config_dict = {**asdict(table_class.config), **user_config_dict}
+            config_dict = {**asdict(table_class.config), **user_config_dict[table_class.__name__]}
 
             table_class.config = Config.get_from_dict(config_dict)
             table = []
