@@ -1,4 +1,3 @@
-from dataclasses import asdict
 from typing import ClassVar
 
 from scripts import FieldValueGenerator
@@ -14,10 +13,6 @@ class Marks:
         )
     )
 
-    # id: int = FieldValueGenerator.generate_int(config.intConfig)
-    # name: str = FieldValueGenerator.generate_str(config.strConfig)
-    # date: datetime = FieldValueGenerator.generate_datetime(config.datetimeConfig)
-    # gpa: float = FieldValueGenerator.generate_float(config.floatConfig)
     id: int = None
     name: str = None
     date: datetime = None
@@ -29,4 +24,3 @@ class Marks:
             self.name = FieldValueGenerator.generate_str(self.config.strConfig)
             self.date = FieldValueGenerator.generate_datetime(self.config.datetimeConfig)
             self.gpa = FieldValueGenerator.generate_float(self.config.floatConfig)
-

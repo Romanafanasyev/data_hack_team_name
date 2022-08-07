@@ -40,6 +40,7 @@ class FakeDataGenerator:
         spark_df_list = []
         for table in tables_list:
             df = spark.createDataFrame(table)
+            df.show()
             spark_df_list.append(df)
 
         return spark_df_list
@@ -49,11 +50,10 @@ class FakeDataGenerator:
 
         tables_list = generate_tables_as_list(tables_class_list, config_path)
 
-        # Изменения для джойнов
+        # Join tables
         for row in range(len(tables_list[0])):
             for col_num in range(len(first_key_list)):
-                tables_list[1][row].__dict__[second_key_list[col_num]] = tables_list[0][row].__dict__[
-                    first_key_list[col_num]]
+                tables_list[1][row][second_key_list[col_num]] = tables_list[0][row][first_key_list[col_num]]
 
         spark_df_list = []
         for table in tables_list:

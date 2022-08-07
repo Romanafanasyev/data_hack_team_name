@@ -1,15 +1,15 @@
 import os
 import unittest
 from pyspark.sql import SparkSession
-from scripts.fakeDataGenerator import FakeDataGenerator
-from test.resource.tables.University import University
-from test.resource.tables.Marks import Marks
-from test.resource.tables.Student import Student
+from scripts.FakeDataGenerator import FakeDataGenerator
+from resources.tables.University import University
+from resources.tables.Marks import Marks
+from resources.tables.Student import Student
 
 class MyTestCase(unittest.TestCase):
     def setUp(self):
         ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
-        self.config_path = ROOT_DIR + "/resource/configs/config_1st_test_case.json"
+        self.config_path = ROOT_DIR + "/resources/configs/config_1st_test_case.json"
         self.tables_class_list = [Marks, Student, University]
         self.spark = SparkSession.builder.appName("Test").getOrCreate()
         self.generator = FakeDataGenerator()

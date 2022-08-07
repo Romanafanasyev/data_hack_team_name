@@ -2,10 +2,9 @@ import os
 
 from pyspark.sql import SparkSession
 
-from scripts.fakeDataGenerator import FakeDataGenerator
+from scripts.FakeDataGenerator import FakeDataGenerator
 from tables.Marks import Marks
 from tables.Student import Student
-import pandas as pd
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 config_path = ROOT_DIR + "/userConfig/config.json"
@@ -41,4 +40,4 @@ for j in range(len(joinable_dataframe_list)):
 print(joinable_dataframe_list[0])
 print(joinable_dataframe_list[1])
 
-spark.close()
+spark.stop()
