@@ -7,13 +7,10 @@ from tables.Marks import Marks
 from tables.Student import Student
 import pandas as pd
 
-
-spark = SparkSession.builder.appName("Test").getOrCreate()
-
-tables_class_list = [Marks, Student]
-
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 config_path = ROOT_DIR + "/userConfig/config.json"
+tables_class_list = [Marks, Student]
+spark = SparkSession.builder.appName("Test").getOrCreate()
 
 dataframes_list = FakeDataGenerator.gen_all(spark, tables_class_list, config_path=config_path)
 
@@ -33,14 +30,14 @@ joinable_dataframe_list = FakeDataGenerator.gen_joinable(
     config_path=config_path)
 # print(*joinable_dataframe_list, sep='\n')
 
-xlsx_data_path = ROOT_DIR + "/data_files/student.xlsx"
-dataframe_from_file = FakeDataGenerator.gen_from_xlsx(spark, Student, xlsx_data_path)
-print(dataframe_from_file)
+csv_data_path = ROOT_DIR + "/data_files/student.csv"
+dataframe_from_csv = FakeDataGenerator.gen_from_file(spark, Student, csv_data_path)
+dataframe_from_csv.show()
 
-for i in range(len(dataframes_list)):
-    dataframes_list[i] = pd.DataFrame(dataframes_list[i])
-print(dataframes_list[0])
-print(dataframes_list[1])
+xlsx_data_path = ROOT_DIR + "/data_files/student.xlsx"
+dataframe_from_xlsx = FakeDataGenerator.gen_from_file(spark, Student, xlsx_data_path)
+dataframe_from_xlsx.show()
+
 
 for j in range(len(joinable_dataframe_list)):
     joinable_dataframe_list[j] = pd.DataFrame(joinable_dataframe_list[j])

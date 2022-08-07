@@ -66,10 +66,7 @@ class FakeDataGenerator:
         return tables_list
 
     @staticmethod
-    def gen_from_csv(spark, file_path):
-        df = spark.read.csv(file_path)
-        return df
-
+    def gen_from_file(spark, table_class, file_path):
         if file_path[-3:] == 'csv':
             file_df = pd.read_csv(file_path)
         else:
@@ -83,6 +80,4 @@ class FakeDataGenerator:
             if col_name in col_names_dataclass:
                 table[col_name] = file_df[col_name]
 
-        # df = spark.createDataFrame(table)
-
-        return table
+        return spark.createDataFrame(table)

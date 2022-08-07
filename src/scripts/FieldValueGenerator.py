@@ -2,6 +2,7 @@ import random
 from faker import Faker
 from scripts.ConfigClasses import *
 
+
 def _choice_from_list(config):
     if config.list_allowed_weights is not None:
         return random.choices(config.list_allowed, config.list_allowed_weights)
