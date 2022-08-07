@@ -19,11 +19,8 @@ class FirstTestCase(unittest.TestCase):
 
     def test_df_max_value(self):
         df = self.df_list[0]
-        self.assertTrue(df.filter(df['gpa'].max() > 5.0), "Wrong max float")
+        self.assertEqual(df.filter(df['gpa'] > 5.0).count(), 0, "Wrong max float")
 
     def test_df_value_list(self):
         df = self.df_list[0]
         self.assertEqual(df.select('name').distinct().count(), 3, "Doesn't work with list of values")
-
-    def tearDown(self):
-        self.spark.stop()
