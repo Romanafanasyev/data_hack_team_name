@@ -1,6 +1,6 @@
 {
   "Marks": {
-      "rows_number":10000,
+      "rows_number":10,
       "intConfig":{
           "list_allowed":null,
           "min_int_value":0,
@@ -29,7 +29,7 @@
       }
     },
   "Student": {
-      "rows_number":10000,
+      "rows_number":10,
       "intConfig":{
           "list_allowed":null,
           "min_int_value":0,
@@ -57,7 +57,7 @@
       }
     },
     "University": {
-      "rows_number":10000,
+      "rows_number":10,
       "intConfig":{
           "list_allowed":null,
           "min_int_value":0,
